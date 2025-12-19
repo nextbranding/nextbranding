@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CONTACT — NEXT BRANDING</title>
+  <meta name="description" content="문의" />
+  <meta property="og:title" content="CONTACT — NEXT BRANDING" />
+  <meta property="og:description" content="문의" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="NEXT BRANDING Home">
+        <span class="logo-dot"></span>
+        <span>NEXT BRANDING</span>
+      </a>
+      <nav class="menu" aria-label="Primary">
+        <a data-nav href="index.html">HOME</a>
+        <a data-nav href="about.html">ABOUT</a>
+        <a data-nav href="solution.html">SOLUTION</a>
+        <a data-nav href="work.html">WORK</a>
+        <a data-nav href="process.html">PROCESS</a>
+        <a data-nav href="contact.html">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">CONTACT</div>
+    <h1>Let’s build what’s next, together.</h1>
+    <p class="lead">문의 목적에 맞게 남겨주면, 가장 적합한 방식으로 빠르게 답변드릴게요.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid-2">
+    <div class="card">
+      <h2>Send a message</h2>
+      <form class="form" id="contactForm">
+        <label>
+          <div class="help">문의 유형</div>
+          <select class="input" name="type" required>
+            <option value="Brand/Marketing">Brand / Marketing</option>
+            <option value="Project/Collaboration">Project / Collaboration</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label>
+          <div class="help">이름 / 회사명</div>
+          <input class="input" name="name" placeholder="Name / Company" required />
+        </label>
+        <label>
+          <div class="help">이메일</div>
+          <input class="input" type="email" name="email" placeholder="you@email.com" required />
+        </label>
+        <label>
+          <div class="help">메시지</div>
+          <textarea name="message" placeholder="프로젝트 목표, 기간, 예산 범위, 참고 링크 등을 적어주세요." required></textarea>
+        </label>
+        <button class="btn primary" type="submit">Prepare Email</button>
+        <div class="note">※ 무료 호스팅( GitHub Pages )에서는 서버 전송이 어려워서, 버튼을 누르면 이메일 앱으로 연결됩니다. 추후 Netlify/Firebase로 폼 전송을 쉽게 확장 가능합니다.</div>
+      </form>
+    </div>
+    <div class="card">
+      <h2>What to include</h2>
+      <p>답변 속도가 빨라집니다.</p>
+      <div class="badges">
+        <span class="badge">목표 (예: 인지도/전환)</span>
+        <span class="badge">기간</span>
+        <span class="badge">예산 범위</span>
+        <span class="badge">현재 상황</span>
+        <span class="badge">레퍼런스 링크</span>
+      </div>
+      <div class="hr"></div>
+      <p class="help">이메일 수신 주소는 아래 파일에서 한 줄만 바꾸면 됩니다.</p>
+      <p class="help"><code>contact.html</code> 안의 <code>TO_EMAIL</code></p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const TO_EMAIL = "ceo@nextbranding.co.kr"; // TODO: 실제 이메일로 변경
+  const form = document.getElementById("contactForm");
+  form.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const fd = new FormData(form);
+    const subject = `[NEXT BRANDING] ${fd.get("type")} 문의 - ${fd.get("name")}`;
+    const body = `문의유형: ${fd.get("type")}
+이름/회사: ${fd.get("name")}
+이메일: ${fd.get("email")}
+
+메시지:
+${fd.get("message")}
+
+(자동 생성된 메일입니다)`;
+    const mailto = `mailto:${encodeURIComponent(TO_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  });
+})();
+</script>
+
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="hr"></div>
+    <small>© 2025 NEXT BRANDING. All rights reserved.</small>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
